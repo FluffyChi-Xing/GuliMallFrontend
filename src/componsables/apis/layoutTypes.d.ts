@@ -58,4 +58,17 @@ export namespace layoutTypes {
         func?: Function;
         dot?: boolean;
     }
+
+
+    /**
+     * @description: 路由标签数据类型
+     * @param {any} icon: 图标
+     * @param {string} label: 标签
+     * @param {Function} func: 调用函数
+     */
+    export interface routerTagDropTypes {
+        icon: any;
+        label: string;
+        func?: Function;
+    }
 }

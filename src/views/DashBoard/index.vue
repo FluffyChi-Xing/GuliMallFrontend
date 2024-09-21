@@ -4,6 +4,7 @@ import KanBan from "@/views/DashBoard/_components/KanBan.vue";
 import {layoutTypes} from "@/componsables/apis/layoutTypes";
 import QuickRouter from "@/views/DashBoard/_components/QuickRouter.vue";
 import TheFooter from "@/components/TheFooter.vue";
+import OrderChart from "@/views/DashBoard/_components/OrderChart.vue";
 
 
 /** ===== 看板初始化-start ===== **/
@@ -85,6 +86,32 @@ const quickStart = [
 ]
 const quickList = ref<layoutTypes.QuickTypes[]>(quickStart)
 /** ===== 快捷入口初始化-end ===== **/
+
+/** ===== 统计图初始化A-start ===== **/
+interface selectTypes {
+  value: string;
+  label: string;
+}
+const selectData = ref<string>('1')
+const selectList = ref<selectTypes[]>([
+  {
+    value: '1',
+    label: '30天'
+  },
+  {
+    value: '2',
+    label: '周'
+  },
+  {
+    value: '3',
+    label: '月'
+  },
+  {
+    value: '4',
+    label: '年'
+  }
+])
+/** ===== 统计图初始化A-end ===== **/
 </script>
 
 <template>
@@ -115,7 +142,26 @@ const quickList = ref<layoutTypes.QuickTypes[]>(quickStart)
       </div>
       <!-- 统计图 A -->
       <div class="w-full h-[300px] flex mt-4">
-        <el-card class="w-full h-full is-never-shadow"></el-card>
+        <el-card class="w-full h-full is-never-shadow p-4">
+          <!-- selector -->
+          <div class="w-full h-10 flex justify-end">
+            <el-radio-group
+                v-model="selectData"
+            >
+              <el-radio-button
+                  v-for="(item, index) in selectList"
+                  :key="index"
+                  :value="item.value"
+              >
+                {{ item.label }}
+              </el-radio-button>
+            </el-radio-group>
+          </div>
+          <!-- charts part -->
+          <div style="height: calc(100% - 40px)" class="w-full flex">
+            <OrderChart />
+          </div>
+        </el-card>
       </div>
       <!-- 统计图 B -->
       <div class="w-full h-[300px] grid grid-cols-2 gap-4 my-4">
@@ -132,4 +178,9 @@ const quickList = ref<layoutTypes.QuickTypes[]>(quickStart)
 
 <style scoped>
 @import "@/assets/css/Element-Plus.scss";
+:deep(.el-card__body) {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>

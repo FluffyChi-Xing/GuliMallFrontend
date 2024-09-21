@@ -71,8 +71,8 @@ watch(() => route.path, () => {
         :collapse="isCollpas"
         collapse-transition
     >
-      <div class="w-full h-[50px] justify-center text-center items-center flex bg-[#08A3A4]">
-        <span class="text-[20px] text-white font-bold">谷粒商城后台系统</span>
+      <div class="w-full h-[50px] justify-center text-center items-center flex">
+        <span class="w-full h-10 flex menu-logo" />
       </div>
       <NestMenu
           v-for="(item, index) in menuData"
@@ -96,5 +96,11 @@ watch(() => route.path, () => {
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
+}
+.menu-logo {
+  background-image: url("@/assets/img/logo-no-background.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 </style>

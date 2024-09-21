@@ -17,6 +17,22 @@ const router = createRouter({
                 meta: {
                     title: '仪表盘'
                 }
+            },
+            {
+                path: '/home/category',
+                name: 'category',
+                meta: {
+                    title: '分类管理'
+                },
+                component: () => import('@/views/Category/index.vue')
+            },
+            {
+                path: '/home/spu',
+                name: 'spu',
+                meta: {
+                    title: 'SPU管理'
+                },
+                component: () => import('@/views/SpuManage/index.vue')
             }
         ]
     }

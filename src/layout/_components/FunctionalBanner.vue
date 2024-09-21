@@ -4,6 +4,7 @@ import {layoutTypes} from "@/componsables/apis/layoutTypes";
 import {ArrowDown, Bell, Expand, Fold, FullScreen, Refresh, Search} from "@element-plus/icons-vue";
 import FunctionButton from "@/layout/_components/FunctionButton.vue";
 import {$store} from "@/componsables/store";
+import GenerateDialog from "@/components/GenerateDialog.vue";
 
 
 /** ===== 功能按钮初始化-start ===== **/
@@ -18,7 +19,8 @@ const funList = [
   },
   {
     content: '搜索',
-    icon: Search
+    icon: Search,
+    func: () => handleOpen()
   },
   {
     content: '消息',
@@ -39,14 +41,14 @@ const funcList = ref<layoutTypes.functionButtonTypes[]>(funList)
 /** ===== 折叠菜单-start ===== **/
 const pageStore = $store.pageStore()
 const icon = ref<any>(Fold)
-function handleCollapse() {
-  pageStore.isCollapse = !pageStore.isCollapse
-  if (pageStore.isCollapse) {
-    icon.value = Fold
-  } else {
-    icon.value = Expand
-  }
-}
+// function handleCollapse() {
+//   pageStore.isCollapse = !pageStore.isCollapse
+//   if (pageStore.isCollapse) {
+//     icon.value = Fold
+//   } else {
+//     icon.value = Expand
+//   }
+// }
 
 function checkIcon() {
   if (pageStore.isCollapse) {
@@ -60,6 +62,14 @@ onMounted(() => {
   checkIcon()
 })
 /** ===== 折叠菜单-end ===== **/
+
+/** ===== 搜索模态框-start ===== **/
+const dialogVisible = ref<boolean>(false)
+const title = ref<string>('搜索')
+function handleOpen() {
+  dialogVisible.value = !dialogVisible.value
+}
+/** ===== 搜索模态框-end ===== **/
 </script>
 
 <template>
@@ -112,6 +122,13 @@ onMounted(() => {
       </div>
     </div>
   </div>
+  <!-- 搜索弹框 -->
+  <GenerateDialog
+      v-model:visible="dialogVisible"
+      :title="title"
+  >
+    <span class="text-xl text-red-500">你确定吗 ?</span>
+  </GenerateDialog>
 </template>
 
 <style lang="scss" scoped>

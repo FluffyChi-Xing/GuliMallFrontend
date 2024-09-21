@@ -1,5 +1,6 @@
-import {getIcon, MenuIconEnums} from "@/componsables/enums/menuIconEnums";
+import * as MenuIconEnums from './enums/menuIconEnums'
+import * as RouterEnum from './enums/routerPathEnum'
 export const $enum = {
     ...MenuIconEnums,
-    getIcon
+    ...RouterEnum
 }

@@ -3,6 +3,7 @@ import { ref } from "vue";
 import KanBan from "@/views/DashBoard/_components/KanBan.vue";
 import {layoutTypes} from "@/componsables/apis/layoutTypes";
 import QuickRouter from "@/views/DashBoard/_components/QuickRouter.vue";
+import TheFooter from "@/components/TheFooter.vue";
 
 
 /** ===== 看板初始化-start ===== **/
@@ -117,10 +118,14 @@ const quickList = ref<layoutTypes.QuickTypes[]>(quickStart)
         <el-card class="w-full h-full is-never-shadow"></el-card>
       </div>
       <!-- 统计图 B -->
-      <div class="w-full h-[300px] grid grid-cols-2 gap-4 mt-4">
+      <div class="w-full h-[300px] grid grid-cols-2 gap-4 my-4">
         <el-card class="w-full h-full is-never-shadow"></el-card>
         <el-card class="w-full h-full is-never-shadow"></el-card>
       </div>
+      <!-- the footer -->
+      <TheFooter
+          :is-show="true"
+      />
     </el-scrollbar>
   </div>
 </template>

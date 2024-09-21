@@ -2,12 +2,12 @@ import {$enum} from "@/componsables/enum";
 
 export const MenuData = [
     {
-        index: '1',
+        index: 'r1',
         label: '仪表盘',
         icon: $enum.getIcon(0),
     },
     {
-        index: '2',
+        index: 'r2',
         label: 'demo',
         icon: $enum.getIcon(6),
     },
@@ -35,6 +35,23 @@ export const MenuData = [
                 index: '3-4',
                 label: '商品维护',
                 icon: $enum.getIcon(5),
+                children: [
+                    {
+                        index: '3-4-1',
+                        label: 'spu管理',
+                        icon: $enum.getIcon(7),
+                    },
+                    {
+                        index: '3-4-2',
+                        label: '发布商品',
+                        icon: $enum.getIcon(8),
+                    },
+                    {
+                        index: '3-4-3',
+                        label: '商品管理',
+                        icon: $enum.getIcon(9),
+                    }
+                ]
             }
         ]
     }

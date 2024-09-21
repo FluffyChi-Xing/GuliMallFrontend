@@ -4,17 +4,18 @@ import {onMounted, ref, watch} from "vue";
 import {$api} from "@/componsables/api";
 import NestMenu from "@/layout/_components/NestMenu.vue";
 import {$store} from "@/componsables/store";
-
+import { useRouter, useRoute } from "vue-router";
+import {$enum} from "@/componsables/enum";
+import {getRouterKey} from "@/componsables/enums/routerPathEnum";
 
 
 const pageStore = $store.pageStore()
+const router = useRouter()
+const route = useRoute()
 /** ===== 菜单初始化-start ===== **/
-const highLight = ref<string>('1');
+const highLight = ref<string>('r1');
 const isCollpas = ref<boolean>(false);
 const menuData = ref<layoutTypes.menuTypes[]>($api.MenuData);
-function handleChange(index: item) {
-  console.log(index)
-}
 
 function handleCollapse() {
   isCollpas.value = pageStore.isCollapse
@@ -25,7 +26,36 @@ onMounted(() => {
 watch(() => pageStore.isCollapse, (val) => {
   isCollpas.value = val
 })
+
+// 路由跳转
+
+function getPath(item: string) {
+  return $enum.getRouterPath(item)
+}
+
+function handleChange(index: string) {
+  console.log(index)
+  console.log($enum.getRouterPath(index))
+  router.push(getPath(index))
+}
 /** ===== 菜单初始化-end ===== **/
+
+/** ===== 菜单高亮持久化-start ===== **/
+function handleHighLight() {
+  //  处理首页不是根地址的问题
+  if (route.path === '/home/dashboard') {
+    highLight.value = 'r1'
+    return
+  }
+  highLight.value = $enum.getRouterKey(route.path);
+}
+onMounted(() => {
+  handleHighLight()
+})
+watch(() => route.path, () => {
+  handleHighLight()
+})
+/** ===== 菜单高亮持久化-end ===== **/
 </script>
 
 <template>

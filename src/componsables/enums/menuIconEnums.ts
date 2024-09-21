@@ -7,7 +7,10 @@ export enum MenuIconEnums {
     Folder,
     Tools,
     ElementPlus,
-    Star
+    Star,
+    DocumentAdd,
+    Edit,
+    Checked
 }
 
 export function getIcon(index: number) {

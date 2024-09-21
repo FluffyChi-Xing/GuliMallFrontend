@@ -3,3 +3,50 @@
   outline: none !important;
   border: none !important;
 }
+
+@mixin main_btns {
+  //font-size: 1.6rem;
+  //font-weight: 700;
+}
+
+@mixin main_success_btn {
+  @include main_btns;
+  background-color: theme('colors.success') !important;
+  color: theme('colors.text') !important;
+}
+
+@mixin main_success_plain_btn {
+  @include main_btns;
+  background-color: theme('colors.text') !important;
+  color: theme('colors.success') !important;
+  border: 1px solid theme('colors.success') !important;
+}
+
+@mixin main_primary_btn {
+  @include main_btns;
+  background-color: theme('colors.primary') !important;
+  color: theme('colors.text') !important;
+}
+
+@mixin main_danger_plain_btn {
+  @include main_btns;
+  background-color: theme('colors.text') !important;
+  color: theme('colors.danger') !important;
+  border: 1px solid theme('colors.danger') !important;
+}
+
+.main_primary_btn {
+  @include main_primary_btn;
+}
+
+.main_success_plain_btn {
+  @include main_success_plain_btn;
+}
+
+.main_success_btn {
+  @include main_success_btn;
+}
+
+.main_danger_plain_btn {
+  @include main_danger_plain_btn;
+}

@@ -17,14 +17,11 @@ withDefaults(defineProps<{
       <el-icon><component :is="menuItem.icon" /></el-icon>
       <span>{{ menuItem.label }}</span>
     </template>
-    <el-menu-item
+    <NestMenu
         v-for="(item, index) in menuItem.children"
         :key="index"
-        :index="item.index"
-    >
-      <el-icon><component :is="item.icon" /></el-icon>
-      <span>{{ item.label }}</span>
-    </el-menu-item>
+        :menuItem="item"
+    />
   </el-sub-menu>
   <el-menu-item
       v-else

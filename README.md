@@ -1,6 +1,8 @@
 # GuliMallFrontend
 
 This template should help get you started developing with Vue 3 in Vite.
+![{415A0737-DE4E-49D9-9BFF-E0A00D6283A6}](https://github.com/user-attachments/assets/8329ca68-572a-473e-bcd7-a97a668ddf71)
+
 
 ## Recommended IDE Setup
 

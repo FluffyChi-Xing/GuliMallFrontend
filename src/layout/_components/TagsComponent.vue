@@ -71,7 +71,7 @@ function initTags() {
   routerSet.forEach((item: string) => {
     addTags(routeGetKey(item), item, keyGetLabel(routeGetKey(item)))
   })
-  console.log(tagsList.value)
+  // console.log(tagsList.value)
 }
 
 function changeRoute(item: string) {

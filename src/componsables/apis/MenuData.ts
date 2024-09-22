@@ -65,15 +65,18 @@ export const MenuData = [
  * @param thing
  */
 export function useIndexGetLabel(thing: string) {
-    return MenuData.find((item: layoutTypes.menuTypes) => {
-        if (item.children?.length) {
-            const foundChild = item.children.find((child: layoutTypes.menuTypes) => {
-                return child.index === thing;
-            });
-            if (foundChild) {
-                return foundChild.label;
+    function findLabel(menuData: layoutTypes.menuTypes[]): string | undefined {
+        for (const item of menuData) {
+            if (item.index === thing) {
+                return item.label;
+            }
+            if (item.children?.length) {
+                const foundLabel = findLabel(item.children);
+                if (foundLabel) {
+                    return foundLabel;
+                }
             }
         }
-        return item.index === thing;
-    });
+    }
+    return findLabel(MenuData);
 }

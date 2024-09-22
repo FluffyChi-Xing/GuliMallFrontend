@@ -5,6 +5,7 @@ import {ArrowDown, Bell, Expand, Fold, FullScreen, Refresh, Search} from "@eleme
 import FunctionButton from "@/layout/_components/FunctionButton.vue";
 import {$store} from "@/componsables/store";
 import GenerateDialog from "@/components/GenerateDialog.vue";
+import BreadCrumb from "@/components/BreadCrumb.vue";
 
 
 /** ===== 功能按钮初始化-start ===== **/
@@ -75,9 +76,8 @@ function handleOpen() {
 <template>
   <div class="w-full h-[50px] top-banner flex px-4 justify-between">
     <!-- 折叠按钮 -->
-    <div class="w-[250px] h-full flex flex-col items-center bg-red-500 justify-center">
-      <!-- TODO: 面包屑导航 -->
-      <span>面包屑导航</span>
+    <div class="w-[250px] h-full flex flex-col items-center">
+      <BreadCrumb />
     </div>
     <!-- 功能列表 -->
     <div class="w-auto h-full flex justify-center">

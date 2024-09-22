@@ -8,6 +8,7 @@ import {$enum} from "@/componsables/enum";
 export function routeGetKey(item: string) {
     // 处理根目录不是首页的问题
     if (item === '/home/dashboard') return 'r1'
+    if (item === '/home') return 'home';
     return $enum.getRouterKey(item);
 }
 
@@ -16,5 +17,6 @@ export function routeGetKey(item: string) {
  * @param item
  */
 export function keyGetLabel(item: string): string | undefined {
-    return useIndexGetLabel(item)?.label;
+    if (item === 'home') return '首页';
+    return useIndexGetLabel(item);
 }

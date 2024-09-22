@@ -75,7 +75,7 @@ function handleOpen() {
 <template>
   <div class="w-full h-[50px] top-banner flex px-4 justify-between">
     <!-- 折叠按钮 -->
-    <div class="w-[200px] h-full flex flex-col items-center bg-red-500 justify-center">
+    <div class="w-[250px] h-full flex flex-col items-center bg-red-500 justify-center">
       <!-- TODO: 面包屑导航 -->
       <span>面包屑导航</span>
     </div>

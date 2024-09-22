@@ -2,8 +2,7 @@
 import {onMounted, ref, watch} from "vue";
 import { useRoute, useRouter } from "vue-router";
 import type {layoutTypes} from "@/componsables/apis/layoutTypes";
-import {$enum} from "@/componsables/enum";
-import {useIndexGetLabel} from "@/componsables/apis/MenuData";
+import {keyGetLabel, routeGetKey} from "@/utils/routeControll";
 
 
 const route = useRoute();
@@ -30,19 +29,19 @@ function getRoute() {
  * 获取路由key
  * @param item
  */
-function routeGetKey(item: string) {
-  // 处理根目录不是首页的问题
-  if (item === '/home/dashboard') return 'r1'
-  return $enum.getRouterKey(item);
-}
+// function routeGetKey(item: string) {
+//   // 处理根目录不是首页的问题
+//   if (item === '/home/dashboard') return 'r1'
+//   return $enum.getRouterKey(item);
+// }
 
 /**
  * 获取路由label
  * @param item
  */
-function keyGetLabel(item: string): string {
-  return useIndexGetLabel(item)?.label;
-}
+// function keyGetLabel(item: string): string {
+//   return useIndexGetLabel(item)?.label;
+// }
 
 
 /**
@@ -88,6 +87,8 @@ watch(() => route.path, () => {
   getRoute()
   initTags()
 })
+
+// TODO: tags使用localStorage存储,实现持久化
 /** ===== 路由tags初始化-end ===== **/
 </script>
 

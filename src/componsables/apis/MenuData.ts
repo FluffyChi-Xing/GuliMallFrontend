@@ -31,6 +31,23 @@ export const MenuData = [
                 index: '3-3',
                 label: '平台属性',
                 icon: $enum.getIcon(4),
+                children: [
+                    {
+                        index: '3-3-1',
+                        label: '属性分组',
+                        icon: $enum.getIcon(10),
+                    },
+                    {
+                        index: '3-3-2',
+                        label: '规格参数',
+                        icon: $enum.getIcon(11),
+                    },
+                    {
+                        index: '3-3-3',
+                        label: '销售属性',
+                        icon: $enum.getIcon(12),
+                    }
+                ]
             },
             {
                 index: '3-4',

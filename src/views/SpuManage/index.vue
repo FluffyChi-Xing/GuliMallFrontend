@@ -123,8 +123,8 @@ const dataList = [
     name: '小米11',
     description: '小米11 8+128G',
     weight: '200g',
-    create_time: '2021-09-01 12:00:00',
-    update_time: '2021-09-01 12:00:00',
+    create_time: new Date(),
+    update_time: new Date(),
     status: true
   },
   {
@@ -132,8 +132,8 @@ const dataList = [
     name: '华为P40',
     description: '华为P40 8+128G',
     weight: '200g',
-    create_time: '2021-09-01 12:00:00',
-    update_time: '2021-09-01 12:00:00',
+    create_time: new Date(),
+    update_time: new Date(),
     status: false
   },
   {
@@ -141,8 +141,8 @@ const dataList = [
     name: '苹果12',
     description: '苹果12 8+128G',
     weight: '200g',
-    create_time: '2021-09-01 12:00:00',
-    update_time: '2021-09-01 12:00:00',
+    create_time: new Date(),
+    update_time: new Date(),
     status: true
   }
 ]
@@ -251,6 +251,7 @@ const tableData = ref<GoodsMaintenance.tableData[]>(dataList);
               <el-table
                   :data="tableData"
                   fit
+                  stripe
                   class="w-full h-full"
                   :header-cell-style="{background: '#E5EEFF', color: '#303133', textAlign: 'center'}"
               >

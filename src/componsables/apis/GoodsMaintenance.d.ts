@@ -1,4 +1,10 @@
 export namespace GoodsMaintenance {
+
+    /**
+     * 商品分类
+     * @param label
+     * @param value
+     */
     export interface spuFilterTypes {
         label: string;
         value: string;

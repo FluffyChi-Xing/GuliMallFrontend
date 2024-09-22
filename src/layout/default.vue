@@ -58,26 +58,31 @@ watch(() => route.path, () => {
 
 <template>
   <div class="w-full max-w-[200px] h-full flex flex-col">
-    <el-menu
-        :default-active="highLight"
-        class="w-full h-full"
-        background-color="#282C34"
-        text-color="#c7c7c7"
-        style="height: 100%;border-right: none"
-        active-text-color="#fff"
-        @select="handleChange"
-        :collapse="isCollpas"
-        collapse-transition
+    <el-scrollbar
+        class="w-full"
+        style="height: 100vh;"
     >
-      <div class="w-full h-[50px] justify-center text-center items-center flex">
-        <span class="w-full h-10 flex menu-logo" />
-      </div>
-      <NestMenu
-          v-for="(item, index) in menuData"
-          :key="index"
-          :menu-item="item"
-      />
-    </el-menu>
+      <el-menu
+          :default-active="highLight"
+          class="w-full h-full"
+          background-color="#282C34"
+          text-color="#c7c7c7"
+          style="height: 100%;border-right: none"
+          active-text-color="#fff"
+          @select="handleChange"
+          :collapse="isCollpas"
+          collapse-transition
+      >
+        <div class="w-full h-[50px] justify-center text-center items-center flex">
+          <span class="w-full h-10 flex menu-logo" />
+        </div>
+        <NestMenu
+            v-for="(item, index) in menuData"
+            :key="index"
+            :menu-item="item"
+        />
+      </el-menu>
+    </el-scrollbar>
   </div>
 </template>
 
@@ -100,5 +105,8 @@ watch(() => route.path, () => {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+:deep(.el-scrollbar__view) {
+  height: 100%;
 }
 </style>

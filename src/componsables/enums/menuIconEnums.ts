@@ -1,5 +1,3 @@
-import {Star} from "@element-plus/icons-vue";
-
 export enum MenuIconEnums {
     PieChart,
     Document,
@@ -10,7 +8,10 @@ export enum MenuIconEnums {
     Star,
     DocumentAdd,
     Edit,
-    Checked
+    Checked,
+    TakeawayBox,
+    Memo,
+    Histogram
 }
 
 export function getIcon(index: number) {

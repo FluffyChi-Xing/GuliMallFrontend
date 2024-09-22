@@ -41,6 +41,21 @@ const router = createRouter({
                     title: '个人中心'
                 },
                 component: () => import('@/views/AdminCenter/index.vue')
+            },
+            {
+                path: '/home/platform',
+                name: 'platform',
+                component: () => import('@/views/PlatformArguments/index.vue'),
+                children: [
+                    {
+                        path: '/home/platform/category',
+                        name: 'platformCategory',
+                        meta: {
+                            title: '平台分类'
+                        },
+                        component: () => import('@/views/PlatformArguments/_component/PlatformCategory.vue')
+                    }
+                ]
             }
         ]
     },
@@ -69,6 +84,9 @@ router.beforeEach((to) => {
     // 解决首页路由重定向问题
     if (to.path === '/') {
         return '/home/dashboard'
+    }
+    if (to.path === '/home/platform') {
+        return '/home/platform/category'
     }
     if (to.meta.title) {
         document.title = to.meta.title as string

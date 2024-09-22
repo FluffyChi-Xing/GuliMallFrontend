@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import {onMounted, ref} from 'vue'
-import {layoutTypes} from "@/componsables/apis/layoutTypes";
+import type {layoutTypes} from "@/componsables/apis/layoutTypes";
 import {ArrowDown, Bell, Expand, Fold, FullScreen, Refresh, Search} from "@element-plus/icons-vue";
 import FunctionButton from "@/layout/_components/FunctionButton.vue";
 import {$store} from "@/componsables/store";
 import GenerateDialog from "@/components/GenerateDialog.vue";
 import BreadCrumb from "@/components/BreadCrumb.vue";
+import { useRouter } from "vue-router";
 
 
+
+const router = useRouter()
 /** ===== 功能按钮初始化-start ===== **/
 function refresh() {
   window.location.reload()
@@ -36,7 +39,9 @@ const funcList = ref<layoutTypes.functionButtonTypes[]>(funList)
 /** ===== 功能按钮初始化-end ===== **/
 
 /** ===== 下拉菜单-start ===== **/
-// TODO 下拉菜单
+function handleAdmin() {
+  router.push('/home/admin')
+}
 /** ===== 下拉菜单-end ===== **/
 
 /** ===== 折叠菜单-start ===== **/
@@ -98,7 +103,7 @@ function handleOpen() {
             <el-icon><arrow-down /></el-icon>
           </div>
           <template #dropdown>
-            <el-dropdown-item>个人中心</el-dropdown-item>
+            <el-dropdown-item @click="handleAdmin">个人中心</el-dropdown-item>
             <el-dropdown-item>退出登录</el-dropdown-item>
           </template>
         </el-dropdown>

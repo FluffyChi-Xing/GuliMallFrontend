@@ -33,6 +33,14 @@ const router = createRouter({
                     title: 'SPU管理'
                 },
                 component: () => import('@/views/SpuManage/index.vue')
+            },
+            {
+                path: '/home/admin',
+                name: 'admin',
+                meta: {
+                    title: '个人中心'
+                },
+                component: () => import('@/views/AdminCenter/index.vue')
             }
         ]
     },

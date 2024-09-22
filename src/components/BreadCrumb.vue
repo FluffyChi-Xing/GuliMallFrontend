@@ -37,7 +37,7 @@ function addBreads() {
       route: item
     })
   })
-  console.log(breadList.value)
+  // console.log(breadList.value)
 }
 
 /**

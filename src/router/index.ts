@@ -43,6 +43,14 @@ const router = createRouter({
           meta: {
               title: '登录'
           }
+      },
+      {
+          path: '/loading',
+          name: 'loading',
+          meta: {
+              title: '加载中'
+          },
+          component: () => import('@/layout/LoadingPage.vue')
       }
   ]
 })

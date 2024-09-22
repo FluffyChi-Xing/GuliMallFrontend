@@ -18,7 +18,7 @@ function clearName() {
 
 function handleLogin() {
   if (username.value && password.value) {
-    router.push('/')
+    router.push('/loading')
     $message({
       type: 'success',
       message: '登录成功'

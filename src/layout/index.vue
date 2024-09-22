@@ -11,7 +11,7 @@ import TopHeader from "@/layout/TopHeader.vue";
         <default />
       </el-aside>
       <el-container>
-        <el-header>
+        <el-header height="80px">
           <!-- header pane -->
           <TopHeader />
         </el-header>

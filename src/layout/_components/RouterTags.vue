@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import {layoutTypes} from "@/componsables/apis/layoutTypes";
+import type {layoutTypes} from "@/componsables/apis/layoutTypes";
 import {Close, DocumentDelete, Refresh} from "@element-plus/icons-vue";
+import TagsComponent from "@/layout/_components/TagsComponent.vue";
 // 路由tags 接口定义
 withDefaults(defineProps<{
 
@@ -47,7 +48,7 @@ const tagDrop = ref<layoutTypes.routerTagDropTypes[]>(dropList)
         style="width: calc(100% - 106px)"
         class="h-ful flex overflow-x-auto"
     >
-      <!-- TODO: 路由tags标记 -->
+      <TagsComponent />
     </div>
     <!-- 右侧功能区 -->
     <div class="w-[76px] h-full flex">

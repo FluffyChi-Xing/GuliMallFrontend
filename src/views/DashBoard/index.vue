@@ -115,7 +115,7 @@ const selectList = ref<selectTypes[]>([
 </script>
 
 <template>
-  <div class="w-full h-full flex flex-col pt-4 overflow-y-auto">
+  <div class="w-full h-full flex flex-col overflow-y-auto">
     <el-scrollbar class="w-full h-full">
       <!-- kanban -->
       <div class="w-full h-[200px] grid grid-cols-4 gap-4">

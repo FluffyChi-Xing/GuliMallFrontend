@@ -9,6 +9,7 @@ export default {
         'info': '#0256FF',
         'danger': '#F56C6C',
         'success': '#b3e19d',
+        'activeTag' : '#E5EEFF',
         'text': '#ffffff',
         'secondary': {
           100: '#E2E2D5',

@@ -50,3 +50,65 @@
 .main_danger_plain_btn {
   @include main_danger_plain_btn;
 }
+
+@mixin primary_tag {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white !important;
+  color: black !important;
+  border-radius: 5px 5px 0 0 !important;
+  position: relative;
+  border: none !important;
+}
+
+@mixin tag_before {
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    background: radial-gradient(circle at 0 0, transparent 24px, white 24px);
+    left: -24px;
+    background-clip: padding-box; // 防止背景延伸到边框下面
+  }
+}
+
+@mixin tag_after {
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    background: radial-gradient(circle at 24px 0, white 24px, transparent 24px);
+    right: -24px;
+    background-clip: padding-box; // 防止背景延伸到边框下面
+  }
+}
+
+.primary_tag {
+  @include primary_tag;
+  @include tag_before;
+  @include tag_after;
+}
+
+@mixin before_after {
+  &:before {
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle at 0 0, transparent 24px, theme('colors.activeTag') 24px);
+  }
+  &:after {
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle at 24px 0, transparent 24px, theme('colors.activeTag') 24px);
+  }
+}
+
+.primary_tag:hover {
+  background-color: theme('colors.activeTag') !important;
+  color: #0256FF !important;
+  @include before_after;
+}
+
+.tag-active {
+  @include before_after;
+  background-color: theme('colors.activeTag') !important;
+}

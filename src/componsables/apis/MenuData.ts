@@ -1,4 +1,5 @@
 import {$enum} from "@/componsables/enum";
+import type {layoutTypes} from "@/componsables/apis/layoutTypes";
 
 export const MenuData = [
     {
@@ -56,3 +57,23 @@ export const MenuData = [
         ]
     }
 ]
+
+
+/**
+ * @description: 获取菜单标签
+ * @param {string} thing
+ * @param thing
+ */
+export function useIndexGetLabel(thing: string) {
+    return MenuData.find((item: layoutTypes.menuTypes) => {
+        if (item.children?.length) {
+            const foundChild = item.children.find((child: layoutTypes.menuTypes) => {
+                return child.index === thing;
+            });
+            if (foundChild) {
+                return foundChild.label;
+            }
+        }
+        return item.index === thing;
+    });
+}

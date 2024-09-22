@@ -1,4 +1,5 @@
 export enum RouterPathEnum {
+    // key = value
     'r1' = '/',
     'r2' = '/home/demo',
     '3-1' = '/home/category',

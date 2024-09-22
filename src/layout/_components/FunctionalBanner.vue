@@ -75,13 +75,9 @@ function handleOpen() {
 <template>
   <div class="w-full h-[50px] top-banner flex px-4 justify-between">
     <!-- 折叠按钮 -->
-    <div class="w-[50px] h-full flex flex-col items-center justify-center">
-<!--      <el-button-->
-<!--          class="w-full h-full"-->
-<!--          type="text"-->
-<!--          :icon="icon"-->
-<!--          @click="handleCollapse"-->
-<!--      />-->
+    <div class="w-[200px] h-full flex flex-col items-center bg-red-500 justify-center">
+      <!-- TODO: 面包屑导航 -->
+      <span>面包屑导航</span>
     </div>
     <!-- 功能列表 -->
     <div class="w-auto h-full flex justify-center">

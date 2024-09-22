@@ -71,4 +71,16 @@ export namespace layoutTypes {
         label: string;
         func?: Function;
     }
+
+
+    /**
+     * @description: 路由标签数据类型
+     * @param {string} index: 路由
+     * @param {string} route: 路由
+     */
+    export interface routerTagTypes {
+        index?: string;
+        route: string;
+        label: string;
+    }
 }

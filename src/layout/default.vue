@@ -34,8 +34,6 @@ function getPath(item: string) {
 }
 
 function handleChange(index: string) {
-  console.log(index)
-  console.log($enum.getRouterPath(index))
   router.push(getPath(index))
 }
 /** ===== 菜单初始化-end ===== **/

@@ -96,4 +96,15 @@ export namespace layoutTypes {
         title?: string;
         desc?: string;
     }
+
+
+    /**
+     * @description: 通用选择框数据类型
+     * @param {string} label: 标签
+     * @param {string | number} value: 值
+     */
+    export interface generateSelectTypes {
+        label: string;
+        value: string | number;
+    }
 }

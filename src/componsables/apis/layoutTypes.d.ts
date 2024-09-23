@@ -83,4 +83,17 @@ export namespace layoutTypes {
         route: string;
         label: string;
     }
+
+    /**
+     * @description: 通知卡片数据类型
+     * @param {string} icon: 图标
+     * @param {string} title: 标题
+     * @param {string} desc: 描述
+     */
+    export interface noticeCardTypes {
+        index?: string;
+        icon?: string;
+        title?: string;
+        desc?: string;
+    }
 }

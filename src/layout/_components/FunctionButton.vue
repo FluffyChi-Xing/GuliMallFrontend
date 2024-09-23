@@ -14,7 +14,6 @@ withDefaults(defineProps<{
   dot?: boolean;
   func?: () => void;
 }>(), {
-  content: '暂无数据',
   icon: Refresh,
   dot: false
 })
@@ -23,6 +22,7 @@ withDefaults(defineProps<{
 <template>
   <div class="w-auto h-full flex mx-4 flex-col justify-center items-center">
     <el-tooltip
+        v-if="content"
         effect="dark"
         placement="bottom"
         :content="content"
@@ -37,6 +37,16 @@ withDefaults(defineProps<{
         />
       </el-badge>
     </el-tooltip>
+    <el-badge
+        v-else
+        :is-dot="dot"
+    >
+      <el-button
+          type="text"
+          :icon="icon"
+          @click="func"
+      />
+    </el-badge>
   </div>
 </template>
 

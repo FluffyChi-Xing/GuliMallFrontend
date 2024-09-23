@@ -7,6 +7,8 @@ import {$store} from "@/componsables/store";
 import GenerateDialog from "@/components/GenerateDialog.vue";
 import BreadCrumb from "@/components/BreadCrumb.vue";
 import { useRouter } from "vue-router";
+import {$message} from "@/componsables/element-plus";
+import NoticeCard from "@/layout/_components/NoticeCard.vue";
 
 
 
@@ -25,10 +27,6 @@ const funList = [
     content: '搜索',
     icon: Search,
     func: () => handleOpen()
-  },
-  {
-    content: '消息',
-    icon: Bell
   },
   {
     content: '全屏',
@@ -72,10 +70,57 @@ onMounted(() => {
 /** ===== 搜索模态框-start ===== **/
 const dialogVisible = ref<boolean>(false)
 const title = ref<string>('搜索')
+const searchValue = ref<string>('')
 function handleOpen() {
   dialogVisible.value = !dialogVisible.value
 }
+
+
+function handleCLear() {
+  searchValue.value = ''
+}
+
+function handleSearch() {
+  if (!searchValue.value) {
+    $message({
+      message: '请输入搜索内容',
+      type: 'warning'
+    })
+  } else {
+    dialogVisible.value = false
+  }
+}
 /** ===== 搜索模态框-end ===== **/
+
+/** ===== 通知-start ===== **/
+const noticeContent = ref<layoutTypes.noticeCardTypes[]>([
+  {
+    icon: 'dingdan1',
+    title: '待发货订单提醒',
+    desc: '您有1098个待发货订单，请尽快处理',
+    index: '/home/order'
+  },
+  {
+    icon: 'xitongbaojing',
+    title: '库存报警',
+    desc: '您有24个商品库存告警'
+  },
+  {
+    icon: 'pinglun',
+    title: '评论回复',
+    desc: '您有13条评论待回复'
+  }
+])
+const noticeIcon = ref<any>(Bell)
+
+function handleNotice(item: layoutTypes.noticeCardTypes[]) {
+  return !!item.length;
+}
+
+function handleRouter(path: string) {
+  router.push(path)
+}
+/** ===== 通知-end ===== **/
 </script>
 
 <template>
@@ -93,6 +138,38 @@ function handleOpen() {
           :content="item.content"
           :func="item.func"
       />
+      <el-dropdown placement="bottom">
+        <FunctionButton
+            :icon="noticeIcon"
+            :dot="handleNotice(noticeContent)"
+        />
+        <template
+            v-if="noticeContent.length"
+            #dropdown
+        >
+          <el-dropdown-item
+              v-for="(item, index) in noticeContent"
+              :key="index"
+              @click="handleRouter(item.index)"
+          >
+            <template #default>
+              <NoticeCard
+                  :icon="item.icon"
+                  :title="item.title"
+                  :desc="item.desc"
+              />
+            </template>
+          </el-dropdown-item>
+        </template>
+        <template
+            v-else
+            #dropdown
+        >
+          <div class="w-[200px] h-20 flex justify-center items-center">
+            <div class="text-[15px]">暂无通知</div>
+          </div>
+        </template>
+      </el-dropdown>
       <!-- 个人中心 / 退出登录 -->
       <div class="w-auto h-full mx-4 flex flex-col items-center justify-center">
         <el-dropdown
@@ -127,8 +204,18 @@ function handleOpen() {
   <GenerateDialog
       v-model:visible="dialogVisible"
       :title="title"
+      @confirm="handleSearch"
   >
-    <span class="text-xl text-red-500">你确定吗 ?</span>
+    <el-form-item label="搜索">
+      <el-input
+          v-model="searchValue"
+          clearable
+          class="w-full"
+          placeholder="请输入搜索内容..."
+          @clear="handleCLear"
+          @keydown.enter="handleSearch"
+      />
+    </el-form-item>
   </GenerateDialog>
 </template>
 

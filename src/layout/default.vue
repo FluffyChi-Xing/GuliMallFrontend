@@ -6,7 +6,7 @@ import NestMenu from "@/layout/_components/NestMenu.vue";
 import {$store} from "@/componsables/store";
 import { useRouter, useRoute } from "vue-router";
 import {$enum} from "@/componsables/enum";
-import {getRouterKey} from "@/componsables/enums/routerPathEnum";
+// import {getRouterKey} from "@/componsables/enums/routerPathEnum";
 
 
 const pageStore = $store.pageStore()
@@ -43,6 +43,10 @@ function handleHighLight() {
   //  处理首页不是根地址的问题
   if (route.path === '/home/dashboard') {
     highLight.value = 'r1'
+    return
+  }
+  if (route.path === '/home/order/manage') {
+    highLight.value = '4-1'
     return
   }
   highLight.value = $enum.getRouterKey(route.path);

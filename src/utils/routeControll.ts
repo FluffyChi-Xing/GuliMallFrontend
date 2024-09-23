@@ -9,6 +9,8 @@ export function routeGetKey(item: string) {
     // 处理根目录不是首页的问题
     if (item === '/home/dashboard') return 'r1'
     if (item === '/home') return 'home';
+    if (item === '/home/order') return 'order';
+    if (item === '/home/order/manage') return 'orderManage';
     return $enum.getRouterKey(item);
 }
 
@@ -18,5 +20,7 @@ export function routeGetKey(item: string) {
  */
 export function keyGetLabel(item: string): string | undefined {
     if (item === 'home') return '首页';
+    if (item === 'order') return '订单系统';
+    if (item === 'orderManage') return '订单管理';
     return useIndexGetLabel(item);
 }

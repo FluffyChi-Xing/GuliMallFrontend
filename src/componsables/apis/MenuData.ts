@@ -72,6 +72,18 @@ export const MenuData = [
                 ]
             }
         ]
+    },
+    {
+        index: '4',
+        label: '订单系统',
+        icon: $enum.getIcon(13),
+        children: [
+            {
+                index: '4-1',
+                label: '订单管理',
+                icon: $enum.getIcon(14),
+            }
+        ]
     }
 ]
 

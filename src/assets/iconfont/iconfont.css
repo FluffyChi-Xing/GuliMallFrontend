@@ -2,9 +2,9 @@
   font-family: "iconfont"; /* Project id 4690633 */
   /* Color fonts */
   src: 
-       url('iconfont.woff2?t=1726886649041') format('woff2'),
-       url('iconfont.woff?t=1726886649041') format('woff'),
-       url('iconfont.ttf?t=1726886649041') format('truetype');
+       url('iconfont.woff2?t=1727051556614') format('woff2'),
+       url('iconfont.woff?t=1727051556614') format('woff'),
+       url('iconfont.ttf?t=1727051556614') format('truetype');
 }
 
 .iconfont {
@@ -13,6 +13,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pinglun:before {
+  content: "\e69b";
+}
+
+.icon-dingdan1:before {
+  content: "\e60f";
+}
+
+.icon-xitongbaojing:before {
+  content: "\e629";
 }
 
 .icon-shangpin:before {

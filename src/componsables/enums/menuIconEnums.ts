@@ -11,7 +11,9 @@ export enum MenuIconEnums {
     Checked,
     TakeawayBox,
     Memo,
-    Histogram
+    Histogram,
+    Management,
+    List
 }
 
 export function getIcon(index: number) {

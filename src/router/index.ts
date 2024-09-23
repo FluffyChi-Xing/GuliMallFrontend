@@ -56,6 +56,21 @@ const router = createRouter({
                         component: () => import('@/views/PlatformArguments/_component/PlatformCategory.vue')
                     }
                 ]
+            },
+            {
+                path: '/home/order',
+                name: 'order',
+                component: () => import('@/views/OrderManagement/index.vue'),
+                children: [
+                    {
+                        path: '/home/order/manage',
+                        name: 'orderManage',
+                        component: () => import('@/views/OrderManagement/_components/OrderManage.vue'),
+                        meta: {
+                            title: '订单管理'
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -85,8 +100,13 @@ router.beforeEach((to) => {
     if (to.path === '/') {
         return '/home/dashboard'
     }
+    // 解决平台分类路由重定向问题
     if (to.path === '/home/platform') {
         return '/home/platform/category'
+    }
+    // 解决订单管理路由重定向问题
+    if (to.path === '/home/order') {
+        return '/home/order/manage'
     }
     if (to.meta.title) {
         document.title = to.meta.title as string

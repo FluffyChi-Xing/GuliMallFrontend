@@ -54,6 +54,14 @@ const router = createRouter({
                             title: '平台分类'
                         },
                         component: () => import('@/views/PlatformArguments/_component/PlatformCategory.vue')
+                    },
+                    {
+                        path: '/home/platform/specification',
+                        name: 'orderSpecification',
+                        meta: {
+                            title: '规格参数'
+                        },
+                        component: () => import('@/views/OrderManagement/_components/SpecificationParams.vue')
                     }
                 ]
             },

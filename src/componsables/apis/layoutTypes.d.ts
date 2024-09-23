@@ -107,4 +107,14 @@ export namespace layoutTypes {
         label: string;
         value: string | number;
     }
+
+    /**
+     * @description: 通用树形数据类型
+     * @param {string} label: 标签
+     * @param {generateTreeTypes[]} children: 子节点
+     */
+    export interface generateTreeTypes {
+        label: string;
+        children: generateTreeTypes[];
+    }
 }

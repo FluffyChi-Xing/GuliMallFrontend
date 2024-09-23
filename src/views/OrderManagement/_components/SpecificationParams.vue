@@ -66,6 +66,8 @@ const tableLabels = ref<GoodsMaintenance.tableDataTypes[]>([
     width: '200'
   }
 ])
+
+// TODO: 泛型不能使用通用表格数据类型，需要添加专用数据类型
 const tableData = ref<GoodsMaintenance.tableData[]>([
   {
     index: '1',

@@ -13,7 +13,7 @@ export namespace GoodsMaintenance {
     export interface tableDataTypes {
         label: string;
         prop: string;
-        width?: number;
+        width?: number | string;
         fixed?: string;
         overflow?: boolean;
     }

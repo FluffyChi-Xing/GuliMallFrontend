@@ -25,7 +25,7 @@ function handleOption() {
       {
         name: 'Access From',
         type: 'pie',
-        radius: '50%',
+        radius: '80%',
         data: [
           { value: 1048, name: '未消费用户' },
           { value: 735, name: '消费一次用户' },

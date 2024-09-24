@@ -12,6 +12,7 @@ import {$enum} from "@/componsables/enum";
 const pageStore = $store.pageStore()
 const router = useRouter()
 const route = useRoute()
+const isShowLogo = ref<boolean>(true)
 /** ===== 菜单初始化-start ===== **/
 const highLight = ref<string>('r1');
 const isCollpas = ref<boolean>(false);
@@ -57,11 +58,15 @@ onMounted(() => {
 watch(() => route.path, () => {
   handleHighLight()
 })
+
+watch(() => pageStore.isShowLogo, (val) => {
+  isShowLogo.value = val
+})
 /** ===== 菜单高亮持久化-end ===== **/
 </script>
 
 <template>
-  <div class="w-full max-w-[200px] h-full flex flex-col">
+  <div class="w-full max-w-[200px] bg-[#282C34] h-full flex flex-col">
     <el-scrollbar
         class="w-full"
         style="height: 100vh;"
@@ -71,14 +76,17 @@ watch(() => route.path, () => {
           class="w-full h-full"
           background-color="#282C34"
           text-color="#c7c7c7"
-          style="height: 100%;border-right: none"
+          style="border-right: none"
           active-text-color="#fff"
           @select="handleChange"
           :collapse="isCollpas"
           collapse-transition
       >
         <div class="w-full h-[50px] justify-center text-center items-center flex">
-          <span class="w-full h-10 flex menu-logo" />
+          <span
+              v-show="isShowLogo"
+              class="w-full h-10 flex menu-logo"
+          />
         </div>
         <NestMenu
             v-for="(item, index) in menuData"

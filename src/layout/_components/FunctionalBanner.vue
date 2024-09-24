@@ -17,6 +17,16 @@ const router = useRouter()
 function refresh() {
   window.location.reload()
 }
+
+// 全屏函数
+function handleFullScreen() {
+  let el = document.fullscreenElement;
+  if (el) {
+    document.exitFullscreen();
+  } else {
+    document.documentElement.requestFullscreen();
+  }
+}
 const funList = [
   {
     content: '刷新',
@@ -30,7 +40,8 @@ const funList = [
   },
   {
     content: '全屏',
-    icon: FullScreen
+    icon: FullScreen,
+    func: () => handleFullScreen()
   }
 ]
 const funcList = ref<layoutTypes.functionButtonTypes[]>(funList)
@@ -121,6 +132,14 @@ function handleRouter(path: string) {
   router.push(path)
 }
 /** ===== 通知-end ===== **/
+
+/** ===== 展开侧边抽屉-start ===== **/
+const emits = defineEmits(['handleCollapse'])
+
+function handleCollapse() {
+  emits('handleCollapse', true)
+}
+/** ===== 展开侧边抽屉-end ===== **/
 </script>
 
 <template>
@@ -195,6 +214,7 @@ function handleRouter(path: string) {
           <el-button
               type="text"
               icon="Setting"
+              @click="handleCollapse"
           />
         </el-tooltip>
       </div>

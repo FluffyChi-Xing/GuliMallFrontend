@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import {onMounted, ref, watch} from 'vue'
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import {layoutTypes} from "@/componsables/apis/layoutTypes";
 import {keyGetLabel, routeGetKey} from "@/utils/routeControll";
+import {$store} from "@/componsables/store";
 
 
 withDefaults(defineProps<{
@@ -13,10 +14,12 @@ withDefaults(defineProps<{
 
 
 const route = useRoute()
-const router = useRouter()
+const pageStore = $store.pageStore()
+// const router = useRouter()
 /** ===== 面包屑导航-start ===== **/
 const routeMatched = ref<string[]>()
 const breadList = ref<layoutTypes.routerTagTypes[]>([])
+const showBread = ref<boolean>(true)
 
 
 /**
@@ -55,12 +58,19 @@ watch(() => route.path, () => {
   getMatched()
   addBreads()
 })
+
+watch(() => pageStore.isShowBread, (val) => {
+  showBread.value = val
+})
 /** ===== 面包屑导航-end ===== **/
 </script>
 
 <template>
   <div class="w-full h-full flex items-center max-w-[250px]">
-    <el-breadcrumb :separator="separator">
+    <el-breadcrumb
+        v-show="showBread"
+        :separator="separator"
+    >
       <el-breadcrumb-item
           v-for="(item, index) in breadList"
           :key="index"

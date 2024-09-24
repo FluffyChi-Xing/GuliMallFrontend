@@ -5,6 +5,8 @@ import {layoutTypes} from "@/componsables/apis/layoutTypes";
 import QuickRouter from "@/views/DashBoard/_components/QuickRouter.vue";
 import TheFooter from "@/components/TheFooter.vue";
 import OrderChart from "@/views/DashBoard/_components/OrderChart.vue";
+import UserChart from "@/views/DashBoard/_components/UserChart.vue";
+import ConsumerChart from "@/views/DashBoard/_components/ConsumerChart.vue";
 
 
 /** ===== 看板初始化-start ===== **/
@@ -165,8 +167,12 @@ const selectList = ref<selectTypes[]>([
       </div>
       <!-- 统计图 B -->
       <div class="w-full h-[300px] grid grid-cols-2 gap-4 my-4">
-        <el-card class="w-full h-full is-never-shadow"></el-card>
-        <el-card class="w-full h-full is-never-shadow"></el-card>
+        <el-card class="w-full h-full is-never-shadow">
+          <UserChart />
+        </el-card>
+        <el-card class="w-full h-full is-never-shadow">
+          <ConsumerChart />
+        </el-card>
       </div>
       <!-- the footer -->
       <TheFooter

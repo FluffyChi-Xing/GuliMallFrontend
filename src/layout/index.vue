@@ -121,6 +121,10 @@ function checkBread() {
 :deep(.el-header) {
   padding: 0;
 }
+:deep(.el-overlay) {
+  --el-overlay-color-lighter: transparent;
+  background-color: var(--el-overlay-color-lighter) !important;
+}
 :deep(.el-radio-button__inner) {
   width: 100%;
   height: 100%;

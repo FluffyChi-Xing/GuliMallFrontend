@@ -94,25 +94,25 @@ interface selectTypes {
   value: string;
   label: string;
 }
-const selectData = ref<string>('1')
-const selectList = ref<selectTypes[]>([
-  {
-    value: '1',
-    label: '30天'
-  },
-  {
-    value: '2',
-    label: '周'
-  },
-  {
-    value: '3',
-    label: '月'
-  },
-  {
-    value: '4',
-    label: '年'
-  }
-])
+// const selectData = ref<string>('1')
+// const selectList = ref<selectTypes[]>([
+//   {
+//     value: '1',
+//     label: '30天'
+//   },
+//   {
+//     value: '2',
+//     label: '周'
+//   },
+//   {
+//     value: '3',
+//     label: '月'
+//   },
+//   {
+//     value: '4',
+//     label: '年'
+//   }
+// ])
 /** ===== 统计图初始化A-end ===== **/
 </script>
 
@@ -146,19 +146,19 @@ const selectList = ref<selectTypes[]>([
       <div class="w-full h-[300px] flex mt-4">
         <el-card class="w-full h-full is-never-shadow p-4">
           <!-- selector -->
-          <div class="w-full h-10 flex justify-end">
-            <el-radio-group
-                v-model="selectData"
-            >
-              <el-radio-button
-                  v-for="(item, index) in selectList"
-                  :key="index"
-                  :value="item.value"
-              >
-                {{ item.label }}
-              </el-radio-button>
-            </el-radio-group>
-          </div>
+<!--          <div class="w-full h-10 flex justify-end">-->
+<!--            <el-radio-group-->
+<!--                v-model="selectData"-->
+<!--            >-->
+<!--              <el-radio-button-->
+<!--                  v-for="(item, index) in selectList"-->
+<!--                  :key="index"-->
+<!--                  :value="item.value"-->
+<!--              >-->
+<!--                {{ item.label }}-->
+<!--              </el-radio-button>-->
+<!--            </el-radio-group>-->
+<!--          </div>-->
           <!-- charts part -->
           <div style="height: calc(100% - 40px)" class="w-full flex">
             <OrderChart />

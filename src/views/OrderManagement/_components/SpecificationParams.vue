@@ -6,6 +6,7 @@ import GeneratePagination from "@/components/GeneratePagination.vue";
 import GenerateTree from "@/components/GenerateTree.vue";
 import type {GoodsMaintenance} from "@/componsables/apis/GoodsMaintenance";
 import GenerateDialog from "@/components/GenerateDialog.vue";
+import type {OrderManageTypes} from "@/componsables/apis/OrderManageTypes";
 
 
 
@@ -67,8 +68,7 @@ const tableLabels = ref<GoodsMaintenance.tableDataTypes[]>([
   }
 ])
 
-// TODO: 泛型不能使用通用表格数据类型，需要添加专用数据类型
-const tableData = ref<GoodsMaintenance.tableData[]>([
+const tableData = ref<OrderManageTypes.OrderDataTypes[]>([
   {
     index: '1',
     name: '入网型号',

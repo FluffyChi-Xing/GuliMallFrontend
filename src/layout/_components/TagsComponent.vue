@@ -3,6 +3,7 @@ import {onMounted, ref, watch} from "vue";
 import { useRoute, useRouter } from "vue-router";
 import type {layoutTypes} from "@/componsables/apis/layoutTypes";
 import {keyGetLabel, routeGetKey} from "@/utils/routeControll";
+import routerTagTypes = layoutTypes.routerTagTypes;
 
 
 const route = useRoute();
@@ -71,11 +72,15 @@ function initTags() {
   routerSet.forEach((item: string) => {
     addTags(routeGetKey(item), item, keyGetLabel(routeGetKey(item)))
   })
-  // console.log(tagsList.value)
 }
 
 function changeRoute(item: string) {
   router.push(item)
+}
+
+// 关闭tags
+function handleClose(index: number) {
+  tagsList.value.splice(index, 1);
 }
 
 // 挂载
@@ -87,8 +92,6 @@ watch(() => route.path, () => {
   getRoute()
   initTags()
 })
-
-// TODO: tags使用localStorage存储,实现持久化
 /** ===== 路由tags初始化-end ===== **/
 </script>
 
@@ -101,6 +104,7 @@ watch(() => route.path, () => {
         @click="changeRoute(item.route)"
         class="primary_tag cursor-pointer"
         :class="{'tag-active': item.route === currentRoute}"
+        @close="handleClose(index)"
     >
       {{ item.label }}
     </el-tag>

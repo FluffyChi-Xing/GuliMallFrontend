@@ -13,7 +13,10 @@ export enum MenuIconEnums {
     Memo,
     Histogram,
     Management,
-    List
+    List,
+    Setting,
+    Menu,
+    Compass
 }
 
 export function getIcon(index: number) {

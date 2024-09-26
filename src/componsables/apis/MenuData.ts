@@ -84,6 +84,23 @@ export const MenuData = [
                 icon: $enum.getIcon(14),
             }
         ]
+    },
+    {
+        index: '5',
+        label: '系统管理',
+        icon: $enum.getIcon(15),
+        children: [
+            {
+                index: '5-1',
+                label: '菜单管理',
+                icon: $enum.getIcon(16),
+            },
+            {
+                index: '5-2',
+                label: 'SQL监控',
+                icon: $enum.getIcon(17),
+            }
+        ]
     }
 ]
 
@@ -111,4 +128,9 @@ export function useIndexGetLabel(thing: string) {
         }
     }
     return findLabel(MenuData);
+}
+
+// get menu data
+export function getMenuData() {
+    return MenuData
 }

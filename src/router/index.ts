@@ -79,6 +79,21 @@ const router = createRouter({
                         }
                     }
                 ]
+            },
+            {
+                path: '/home/setting',
+                name: 'sysSetting',
+                component: () => import('@/views/SystemSetting/index.vue'),
+                children: [
+                    {
+                        path: '/home/setting/menu',
+                        name: 'menuSetting',
+                        meta: {
+                            title: '菜单管理',
+                        },
+                        component: () => import('@/views/SystemSetting/_component/MenuSetting.vue')
+                    }
+                ]
             }
         ]
     },
@@ -115,6 +130,10 @@ router.beforeEach((to) => {
     // 解决订单管理路由重定向问题
     if (to.path === '/home/order') {
         return '/home/order/manage'
+    }
+    // 解决系统管理首页重定向问题
+    if (to.path === '/home/setting') {
+        return '/home/setting/menu'
     }
     if (to.meta.title) {
         document.title = to.meta.title as string

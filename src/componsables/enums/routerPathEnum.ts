@@ -31,6 +31,7 @@ export function getRouterPath(item: string) {
  */
 export function getRouterKey(item: string) {
     if (item === '/home/admin') return 'admin'
+    if (item === '/home/setting') return 'setting'
     // 将枚举的key转换为数组，然后通过数组的find方法找到对应的key
     return Object.keys(RouterPathEnum).find(key => RouterPathEnum[key as keyof typeof RouterPathEnum] === item)
 }

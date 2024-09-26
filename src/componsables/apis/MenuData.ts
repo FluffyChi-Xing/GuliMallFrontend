@@ -119,6 +119,9 @@ export function useIndexGetLabel(thing: string) {
     if (thing === 'admin') {
         return '个人中心';
     }
+    if (thing === 'setting') {
+        return '系统设置';
+    }
     function findLabel(menuData: layoutTypes.menuTypes[]): string | undefined {
         for (const item of menuData) {
             if (item.index === thing) {

@@ -7,6 +7,7 @@ import {layoutTypes} from "@/componsables/apis/layoutTypes";
 import {getMenuData} from "@/componsables/apis/MenuData";
 import {getRouterPath} from "@/componsables/enums/routerPathEnum";
 import MenuNestTable from "@/views/SystemSetting/_component/MenuNestTable.vue";
+import GenerateDialog from "@/components/GenerateDialog.vue";
 
 
 
@@ -42,6 +43,20 @@ onMounted(() => {
   handleMenuData()
 })
 /** ===== 菜单管理初始化-end ===== **/
+
+/** ===== 菜单添加窗口初始化-start ====== **/
+const dialogVisible = ref<boolean>(false)
+
+function handleAddMenu() {
+  dialogVisible.value = true
+}
+
+function handleConfirm(index: boolean) {
+  if (index) {
+    dialogVisible.value = false
+  }
+}
+/** ===== 菜单添加窗口初始化-end ====== **/
 </script>
 
 <template>
@@ -51,7 +66,7 @@ onMounted(() => {
         title="菜单管理"
     >
       <div class="w-full h-10 flex justify-end">
-        <el-button class="main_primary_btn">新增</el-button>
+        <el-button @click="handleAddMenu" class="main_primary_btn">新增</el-button>
       </div>
     </TheHead>
     <!-- table area -->
@@ -69,13 +84,20 @@ onMounted(() => {
             />
           </div>
           <!-- pagination -->
-          <div class="w-full h-10 flex flex-col">
-            <GeneratePagination />
-          </div>
+<!--          <div class="w-full h-10 flex flex-col">-->
+<!--            <GeneratePagination />-->
+<!--          </div>-->
         </el-card>
       </div>
     </el-scrollbar>
   </div>
+  <GenerateDialog
+      v-model:visible="dialogVisible"
+      title="添加目录"
+      @confirm="handleConfirm"
+  >
+    <span class="text-red-500">您确定要添加目录吗 ?</span>
+  </GenerateDialog>
 </template>
 
 <style scoped>

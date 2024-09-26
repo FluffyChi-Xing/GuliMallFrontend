@@ -133,4 +133,10 @@ const shouldExpand = computed(() => {
 .el-table .success-row {
   --el-table-tr-bg-color: var(--el-color-success-light-9);
 }
+
+:deep(.el-table__expanded-cell) {
+  border: 1px solid theme('colors.primary') !important;
+  padding: 10px;
+  background-color: #F0F2F5 !important;
+}
 </style>

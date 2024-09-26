@@ -99,6 +99,11 @@ export const MenuData = [
                 index: '5-2',
                 label: 'SQL监控',
                 icon: $enum.getIcon(17),
+            },
+            {
+                index: '5-3',
+                label: '角色管理',
+                icon: $enum.getIcon(18),
             }
         ]
     }

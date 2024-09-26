@@ -16,7 +16,8 @@ export enum MenuIconEnums {
     List,
     Setting,
     Menu,
-    Compass
+    Compass,
+    User
 }
 
 // 获取图标

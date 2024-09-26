@@ -13,7 +13,8 @@ export enum RouterPathEnum {
     '3-3-3' = '/home/platform/sales',
     '4-1' = '/home/order',
     '5-1' = '/home/setting/menu',
-    '5-2' = '/home/setting/sql'
+    '5-2' = '/home/setting/sql',
+    '5-3' = '/home/setting/role',
 }
 
 /**

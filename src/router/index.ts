@@ -92,6 +92,14 @@ const router = createRouter({
                             title: '菜单管理',
                         },
                         component: () => import('@/views/SystemSetting/_component/MenuSetting.vue')
+                    },
+                    {
+                        path: '/home/setting/role',
+                        name: 'settingName',
+                        meta: {
+                            title: '角色管理'
+                        },
+                        component: () => import('@/views/SystemSetting/RoleManage/index.vue')
                     }
                 ]
             }

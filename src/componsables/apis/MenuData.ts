@@ -106,6 +106,25 @@ export const MenuData = [
                 icon: $enum.getIcon(18),
             }
         ]
+    },
+    {
+        index: '6',
+        label: '装修',
+        icon: $enum.getIcon(19),
+        children: [
+            {
+                index: '6-1',
+                label: '数据配置'
+            },
+            {
+                index: '6-2',
+                label: '素材管理'
+            },
+            {
+                index: '6-3',
+                label: '秒杀活动'
+            }
+        ]
     }
 ]
 
@@ -121,6 +140,9 @@ export function useIndexGetLabel(thing: string) {
     }
     if (thing === 'setting') {
         return '系统设置';
+    }
+    if (thing === 'fitment') {
+        return '装修'
     }
     function findLabel(menuData: layoutTypes.menuTypes[]): string | undefined {
         for (const item of menuData) {

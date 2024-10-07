@@ -14,7 +14,11 @@ withDefaults(defineProps<{
       :index="menuItem.index"
   >
     <template #title>
-      <el-icon><component :is="menuItem.icon" /></el-icon>
+      <el-icon
+          v-if="menuItem.icon"
+      >
+        <component :is="menuItem.icon" />
+      </el-icon>
       <span>{{ menuItem.label }}</span>
     </template>
     <NestMenu

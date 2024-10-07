@@ -102,6 +102,21 @@ const router = createRouter({
                         component: () => import('@/views/SystemSetting/RoleManage/index.vue')
                     }
                 ]
+            },
+            {
+                path: '/home/fitment',
+                name: 'fitment',
+                component: () => import('@/views/Fitment/index.vue'),
+                children: [
+                    {
+                        path: '/home/fitment/databind',
+                        name: 'databind',
+                        meta: {
+                            title: '数据配置'
+                        },
+                        component: () => import('@/views/Fitment/DataBind/index.vue')
+                    }
+                ]
             }
         ]
     },

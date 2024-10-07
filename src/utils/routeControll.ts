@@ -11,6 +11,7 @@ export function routeGetKey(item: string) {
     if (item === '/home') return 'home';
     if (item === '/home/order') return 'order';
     if (item === '/home/order/manage') return 'orderManage';
+    if (item === '/home/fitment') return 'fitment'
     return $enum.getRouterKey(item);
 }
 
@@ -22,5 +23,6 @@ export function keyGetLabel(item: string): string | undefined {
     if (item === 'home') return '首页';
     if (item === 'order') return '订单系统';
     if (item === 'orderManage') return '订单管理';
+    if (item === 'fitment') return '装修'
     return useIndexGetLabel(item);
 }

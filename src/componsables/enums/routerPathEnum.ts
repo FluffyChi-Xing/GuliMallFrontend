@@ -15,6 +15,9 @@ export enum RouterPathEnum {
     '5-1' = '/home/setting/menu',
     '5-2' = '/home/setting/sql',
     '5-3' = '/home/setting/role',
+    '6-1' = '/home/fitment/databind',
+    '6-2' = '/home/fitment/resource',
+    '6-3' = '/home/fitment/spikes'
 }
 
 /**

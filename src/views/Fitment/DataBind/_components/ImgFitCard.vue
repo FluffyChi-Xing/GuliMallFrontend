@@ -34,7 +34,7 @@ function changeUrl() {
 </script>
 
 <template>
-  <div class="w-full rounded-[5px] overflow-hidden fit-card mb-4 h-[150px] flex p-4">
+  <div class="w-full rounded-[5px] overflow-hidden fit-card mb-4 h-auto flex p-4">
     <!-- image preview -->
     <div class="w-[118px] h-full flex mr-4">
       <img
@@ -67,6 +67,7 @@ function changeUrl() {
             @clear="clearUrl"
         />
       </el-form-item>
+      <slot name="more" />
       <el-form-item>
         <div class="w-full h-auto flex justify-end">
           <el-button @click="changeUrl" class="main_danger_plain_btn">确认</el-button>
@@ -86,6 +87,6 @@ function changeUrl() {
   border: 1px dashed theme('colors.info');
 }
 :deep(.el-form-item) {
-  margin-bottom: auto !important;
+  margin-bottom: 10px !important;
 }
 </style>

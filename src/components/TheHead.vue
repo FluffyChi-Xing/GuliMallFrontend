@@ -17,7 +17,10 @@ withDefaults(defineProps<{
         class="w-full h-full p-4 is-never-shadow"
     >
       <div class="w-full h-full flex flex-col items-center">
-        <span class="text-xl font-bold w-full h-auto text-start">{{ title }}</span>
+        <div class="text-xl flex justify-between font-bold w-full h-auto text-start">
+          {{ title }}
+          <slot name="head" />
+        </div>
         <slot />
       </div>
     </el-card>

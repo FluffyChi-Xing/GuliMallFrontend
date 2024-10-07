@@ -114,3 +114,13 @@
   color: #0256FF !important;
 }
 
+@mixin hot-color {
+  background: linear-gradient(90deg,#FF475D,#FF0F23) !important;
+}
+
+.hot-tag {
+  @include hot-color;
+  color: white !important;
+  outline: none !important;
+  border: none !important;
+}

@@ -4,12 +4,15 @@ import TheHead from "@/components/TheHead.vue";
 import SideTabs from "@/views/Fitment/DataBind/_components/SideTabs.vue";
 import HomeSwiper from "@/views/Fitment/DataBind/_components/HomeSwiper.vue";
 import HomeSwiperFit from "@/views/Fitment/DataBind/_components/HomeSwiperFit.vue";
+import HomeSale from "@/views/Fitment/DataBind/_components/HomeSale.vue";
+import HomeSaleFit from "@/views/Fitment/DataBind/_components/HomeSaleFit.vue";
+import {FitmentTypes} from "@/componsables/apis/fitmentTypes";
 
 
 
 /** ===== 侧边栏初始化-start ===== **/
 const currentTab = ref<string>('0')
-const componentsList = ref<any[]>([HomeSwiper])
+const componentsList = ref<any[]>([HomeSwiper, HomeSale])
 const currentComponent = ref<any>(componentsList.value[0])
 const tabList = ref<string[]>([
   '首页轮播图',
@@ -18,7 +21,7 @@ const tabList = ref<string[]>([
 ])
 function handleChangeTab(index: string) {
   currentTab.value = index
-  console.log(tabList.value[Number(index)])
+  currentComponent.value = componentsList.value[Number(index)]
 }
 /** ===== 侧边栏初始化-end ===== **/
 
@@ -48,6 +51,18 @@ function changeIndicator(index: string) {
   indicator.value = index
 }
 /** ===== 首页轮播图配置-end ===== **/
+
+/** ===== 首页优惠推荐初始化-start ===== **/
+const title = ref<string>('谷粒秒杀')
+const hotTag = ref<string>('1元抢大牌')
+const goods = ref<FitmentTypes.homeSalesTypes[]>([
+  {
+    index: 0,
+    price: 100,
+    imgUrl: 'https://picsum.photos/200/300',
+  }
+])
+/** ===== 首页优惠推荐初始化-end ===== **/
 </script>
 
 <template>
@@ -82,6 +97,9 @@ function changeIndicator(index: string) {
                 :interval="interval"
                 :arrow="arrow"
                 :indicator="indicator"
+                :title="title"
+                :hotTag="hotTag"
+                :goods="goods"
             />
           </div>
           <!-- data bind area -->
@@ -105,6 +123,13 @@ function changeIndicator(index: string) {
                 @change-interval="changeInterval"
                 @change-arrow="fitArrow"
                 @change-indicator="changeIndicator"
+            />
+            <!-- 首页优惠推荐配置 -->
+            <HomeSaleFit
+                v-if="currentTab === '1'"
+                :title="title"
+                :hotTag="hotTag"
+                :goods="goods"
             />
           </div>
         </div>

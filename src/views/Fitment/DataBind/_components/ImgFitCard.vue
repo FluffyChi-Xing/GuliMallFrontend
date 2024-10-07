@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 const props = withDefaults(defineProps<{
   imgUrl?: string;
+  index?: number;
 }>(), {
 
 })
@@ -10,6 +11,7 @@ const props = withDefaults(defineProps<{
 
 const imgUrl = ref<string>(props.imgUrl) // 图片地址
 const imgName = ref<string>('') // 图片名称
+const emits = defineEmits(['change-url'])
 
 function handleError() {
   imgUrl.value = 'src/assets/img/error-img.png'
@@ -22,6 +24,13 @@ function clearName() {
 function clearUrl() {
   imgUrl.value = ''
 }
+
+function changeUrl() {
+  emits('change-url', {
+    label: props.index,
+    value: imgUrl.value
+  })
+}
 </script>
 
 <template>
@@ -33,7 +42,6 @@ function clearUrl() {
           alt=""
           class="w-full h-full object-contain img-border"
           loading="lazy"
-          @error="handleError"
       >
     </div>
     <!-- image setting form -->
@@ -61,7 +69,7 @@ function clearUrl() {
       </el-form-item>
       <el-form-item>
         <div class="w-full h-auto flex justify-end">
-          <el-button class="main_danger_plain_btn">确认</el-button>
+          <el-button @click="changeUrl" class="main_danger_plain_btn">确认</el-button>
         </div>
       </el-form-item>
     </div>

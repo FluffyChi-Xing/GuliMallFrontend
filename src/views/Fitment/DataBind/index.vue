@@ -24,13 +24,29 @@ function handleChangeTab(index: string) {
 
 /** ===== 首页轮播图配置-start ===== **/
 const interval = ref<number>(1000) // 轮播图延时
-const blur = ref<boolean>() // 轮播图动态模糊
-const arrow = ref<string>('') // 轮播图箭头
-const indicator = ref<string>('') // 轮播图指示器
+const blur = ref<boolean>(false) // 轮播图动态模糊
+const arrow = ref<string>('hover') // 轮播图箭头
+const indicator = ref<string>('outside') // 轮播图指示器
 const imgUrl = ref<string[]>([
   'src/assets/img/login-sw-2.png',
   'src/assets/img/login-bg@2.png'
 ])
+
+function changeBlur(index: boolean) {
+  blur.value = index
+}
+
+function changeInterval(index: number) {
+  interval.value = index
+}
+
+function fitArrow(index: string) {
+  arrow.value = index
+}
+
+function changeIndicator(index: string) {
+  indicator.value = index
+}
 /** ===== 首页轮播图配置-end ===== **/
 </script>
 
@@ -58,10 +74,14 @@ const imgUrl = ref<string[]>([
             />
           </div>
           <!-- show area -->
-          <div class="col-span-2 w-full h-full flex flex-col items-center justify-center">
+          <div class="col-span-2 w-full h-full flex flex-col items-center">
             <component
                 :is="currentComponent"
                 :imgList="imgUrl"
+                :blur="blur"
+                :interval="interval"
+                :arrow="arrow"
+                :indicator="indicator"
             />
           </div>
           <!-- data bind area -->
@@ -79,6 +99,12 @@ const imgUrl = ref<string[]>([
             <HomeSwiperFit
                 v-if="currentTab === '0'"
                 :img-list="imgUrl"
+                :arrow="arrow"
+                :indicator="indicator"
+                @change-blur="changeBlur"
+                @change-interval="changeInterval"
+                @change-arrow="fitArrow"
+                @change-indicator="changeIndicator"
             />
           </div>
         </div>

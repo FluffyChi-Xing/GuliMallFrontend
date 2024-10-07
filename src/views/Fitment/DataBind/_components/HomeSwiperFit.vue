@@ -1,18 +1,26 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import {onMounted, ref} from 'vue'
 import ImgFitCard from "@/views/Fitment/DataBind/_components/ImgFitCard.vue";
+import {$message} from "@/componsables/element-plus";
 
 const props = withDefaults(defineProps<{
   imgList?: string[];
+  arrow?: string;
+  indicator?: string;
 }>(), {
 
 })
 /** ===== 首页轮播图配置-start ===== **/
+const emits = defineEmits(['change-blur', 'change-interval', 'change-arrow', 'change-indicator'])
 const imgUrl = ref<string[]>(props.imgList) // 轮播列表，上限五张
 const interval = ref<number>(1000) // 轮播图延时
 const blur = ref<boolean>(false) // 轮播图动态模糊
-const arrow = ref<string>('') // 轮播图箭头
-const indicator = ref<string>('') // 轮播图指示器
+const arrow = ref<string>(props.arrow) // 轮播图箭头
+const indicator = ref<string>(props.indicator) // 轮播图指示器
+interface imgFitType {
+  label: number;
+  value: string;
+}
 const arrowList = [
   {
     label: '默认',
@@ -45,6 +53,45 @@ const indicatorList = [
 function clearIndicator() {
   indicator.value = ''
 }
+
+function changeBlur() {
+  emits('change-blur', blur.value)
+}
+
+function changeInterval() {
+  emits('change-interval', interval.value)
+}
+
+function changeArrow() {
+  emits('change-arrow', arrow.value)
+}
+
+function clearArrow() {
+  arrow.value = ''
+}
+
+function changeIndicator() {
+  emits('change-indicator', indicator.value)
+}
+
+function changeUrl(index: imgFitType) {
+  if (imgUrl.value.length > index.label) {
+    imgUrl.value[index.label] = index.value
+  } else {
+    imgUrl.value.push(index.value)
+  }
+}
+
+function handleAddImg() {
+  if (imgUrl.value.length <= 5) {
+    imgUrl.value.push('')
+  } else {
+    $message({
+      message: '最多只能添加五张图片',
+      type: 'warning'
+    })
+  }
+}
 /** ===== 首页轮播图配置-end ===== **/
 </script>
 
@@ -57,12 +104,14 @@ function clearIndicator() {
           v-model="interval"
           min="500"
           :step="500"
+          @change="changeInterval"
       />
     </el-form-item>
     <el-form-item label="是否开启动态模糊">
       <el-switch
           v-model="blur"
           style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
+          @change="changeBlur"
       />
     </el-form-item>
     <el-form-item label="指示器">
@@ -72,6 +121,7 @@ function clearIndicator() {
           style="width: 200px"
           clearable
           @clear="clearIndicator"
+          @change="changeIndicator"
       >
         <el-option
             v-for="(item, index) in indicatorList"
@@ -87,7 +137,8 @@ function clearIndicator() {
           placeholder="请选择切换箭头设置"
           style="width: 200px"
           clearable
-          @clear="clearIndicator"
+          @clear="clearArrow"
+          @change="changeArrow"
       >
         <el-option
             v-for="(item, index) in arrowList"
@@ -103,10 +154,12 @@ function clearIndicator() {
           v-for="(item, index) in imgUrl"
           :key="index"
           :img-url="item"
+          :index="index"
+          @change-url="changeUrl"
       />
     </div>
     <div class="w-full h-auto flex justify-end">
-      <el-button class="main_primary_btn">添加图片</el-button>
+      <el-button @click="handleAddImg" class="main_primary_btn">添加图片</el-button>
     </div>
   </div>
 </template>

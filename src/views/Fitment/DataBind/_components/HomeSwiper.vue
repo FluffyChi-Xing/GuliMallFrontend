@@ -9,10 +9,7 @@ withDefaults(defineProps<{
   blur?: boolean;
   arrow?: string;
 }>(), {
-  indicator: 'bottom',
-  interval: 3000,
-  blur: false,
-  arrow: 'hover'
+
 })
 </script>
 

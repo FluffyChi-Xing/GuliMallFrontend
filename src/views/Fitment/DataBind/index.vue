@@ -7,12 +7,14 @@ import HomeSwiperFit from "@/views/Fitment/DataBind/_components/HomeSwiperFit.vu
 import HomeSale from "@/views/Fitment/DataBind/_components/HomeSale.vue";
 import HomeSaleFit from "@/views/Fitment/DataBind/_components/HomeSaleFit.vue";
 import {FitmentTypes} from "@/componsables/apis/fitmentTypes";
+import HomeBannerAd from "@/views/Fitment/DataBind/_components/HomeBannerAd.vue";
+import ImgFitCard from "@/views/Fitment/DataBind/_components/ImgFitCard.vue";
 
 
 
 /** ===== 侧边栏初始化-start ===== **/
 const currentTab = ref<string>('0')
-const componentsList = ref<any[]>([HomeSwiper, HomeSale])
+const componentsList = ref<any[]>([HomeSwiper, HomeSale, HomeBannerAd])
 const currentComponent = ref<any>(componentsList.value[0])
 const tabList = ref<string[]>([
   '首页轮播图',
@@ -63,6 +65,18 @@ const goods = ref<FitmentTypes.homeSalesTypes[]>([
   }
 ])
 /** ===== 首页优惠推荐初始化-end ===== **/
+
+/** ===== 首页banner位广告初始化-start ===== **/
+const adUrl = ref<string>('https://img10.360buyimg.com/babel/jfs/t20271005/216200/27/44300/18665/670151a3Ffc7d78df/1921f2884c8d9d18.jpg.avif')
+interface bannerAdTypes {
+  label: number;
+  value: string;
+}
+
+function changeUrl(item: bannerAdTypes) {
+  adUrl.value = item.value
+}
+/** ===== 首页banner位广告初始化-end ===== **/
 </script>
 
 <template>
@@ -100,6 +114,7 @@ const goods = ref<FitmentTypes.homeSalesTypes[]>([
                 :title="title"
                 :hotTag="hotTag"
                 :goods="goods"
+                :adUrl="adUrl"
             />
           </div>
           <!-- data bind area -->
@@ -112,7 +127,6 @@ const goods = ref<FitmentTypes.homeSalesTypes[]>([
             <div class="w-full h-auto text-[10px] mt-2 text-gray-500">
               建议尺寸：690 * 240px，拖拽图片可调整图片顺序哦，最多添加五张
             </div>
-            <!-- form -->
             <!-- 首页轮播图配置 -->
             <HomeSwiperFit
                 v-if="currentTab === '0'"
@@ -130,6 +144,12 @@ const goods = ref<FitmentTypes.homeSalesTypes[]>([
                 :title="title"
                 :hotTag="hotTag"
                 :goods="goods"
+            />
+            <!-- 首页banner栏广告配置 -->
+            <ImgFitCard
+                v-if="currentTab === '2'"
+                :img-url="adUrl"
+                @change-url="changeUrl"
             />
           </div>
         </div>
